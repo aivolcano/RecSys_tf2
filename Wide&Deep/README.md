@@ -13,13 +13,18 @@ F(x) = f(x) + x， f(x)可视为DNN（非线性），x可视为LR（线性）
 ![image](https://user-images.githubusercontent.com/68730894/115326678-3b8fba80-a1c0-11eb-8d74-f4c277a113d8.png)
 ![image](https://user-images.githubusercontent.com/68730894/115326683-3fbbd800-a1c0-11eb-945c-e6837d54005d.png)
 
-
 从数学公式看，如果没有非线性激活函数，残差网络存在与否意义不大。如果残差网络存在，则只是做了简单的平移：
 ![image](https://user-images.githubusercontent.com/68730894/115326716-5104e480-a1c0-11eb-86a6-9783845b408c.png)
 
 增加非线性激活函数之后，上述式子发生改变，模型的特征表达能力大幅提升。这也是为什么Residual Block有2个权重（W_1,W_2）的原因。
 
 ![image](https://user-images.githubusercontent.com/68730894/115326744-5eba6a00-a1c0-11eb-8d64-7a0cd29f1c28.png)
+
+残差网络升级扩展，数学上证明：
+![image](https://user-images.githubusercontent.com/68730894/115329746-557fcc00-a1c5-11eb-859e-a0871c94a291.png)
+
+![image](https://user-images.githubusercontent.com/68730894/115329737-50228180-a1c5-11eb-9b83-280ac2fbe376.png)
+
 
 为了实现一直堆叠网络而不发生网络退化的需要，何凯明让模型内部结构具备恒等映射能力：将上一层（或几层）之前的输出与本层计算的输出相加，可以将求和的结果输入到激活函数中做为本层的输出。
 
