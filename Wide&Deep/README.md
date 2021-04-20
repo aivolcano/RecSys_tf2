@@ -21,7 +21,11 @@ F(x) = f(x) + x， f(x)可视为DNN（非线性），x可视为LR（线性）
 ![image](https://user-images.githubusercontent.com/68730894/115326744-5eba6a00-a1c0-11eb-8d64-7a0cd29f1c28.png)
 
 残差网络升级扩展，数学上证明：
+原始残差网络
+
 ![image](https://user-images.githubusercontent.com/68730894/115329746-557fcc00-a1c5-11eb-859e-a0871c94a291.png)
+
+增加非线性激活
 
 ![image](https://user-images.githubusercontent.com/68730894/115329737-50228180-a1c5-11eb-9b83-280ac2fbe376.png)
 
