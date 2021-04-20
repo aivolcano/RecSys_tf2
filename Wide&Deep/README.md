@@ -14,10 +14,19 @@ F(x) = f(x) + x， f(x)可视为DNN（非线性），x可视为LR（线性）
 ![image](https://user-images.githubusercontent.com/68730894/115326683-3fbbd800-a1c0-11eb-945c-e6837d54005d.png)
 
 
-
 从数学公式看，如果没有非线性激活函数，残差网络存在与否意义不大。如果残差网络存在，则只是做了简单的平移：
+![image](https://user-images.githubusercontent.com/68730894/115326716-5104e480-a1c0-11eb-86a6-9783845b408c.png)
 
-增加非线性激活函数之后，y=W_2 σ(W_1 x)+x=(〖σW〗_1 W_2+1)x，模型的特征表达能力大幅提升。这也是为什么Residual Block有2个权重（W_1,W_2）的原因。
+增加非线性激活函数之后，上述式子发生改变，模型的特征表达能力大幅提升。这也是为什么Residual Block有2个权重（W_1,W_2）的原因。
+
+![image](https://user-images.githubusercontent.com/68730894/115326744-5eba6a00-a1c0-11eb-8d64-7a0cd29f1c28.png)
+
+为了实现一直堆叠网络而不发生网络退化的需要，何凯明让模型内部结构具备恒等映射能力：将上一层（或几层）之前的输出与本层计算的输出相加，可以将求和的结果输入到激活函数中做为本层的输出。
+
+![image](https://user-images.githubusercontent.com/68730894/115329308-b6f36b00-a1c4-11eb-8663-ea1adf866b6e.png)
+
+此外，FM也自带残差网络效果
+![image](https://user-images.githubusercontent.com/68730894/115329578-13568a80-a1c5-11eb-9b34-871b845fdfd9.png)
 
 工程上来说，该模块在原始论文中提到由特别强的记忆能力，笔者认为，这应该是是依靠LR强大的“评分卡”实现的，此外，该模块也赋予模型强大的可解释性能力
 
