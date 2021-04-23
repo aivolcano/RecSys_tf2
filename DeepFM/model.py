@@ -111,14 +111,17 @@ class DeepFM(tf.keras.Model):
         self.fm = FM(k, fm_w_reg, fm_v_reg)
         self.dnn = DNN(hidden_units, activation, dnn_dropout) 
         self.dense = tf.keras.layers.Dense(1, activation=None)
-        #deep + residual block
+        # deep + residual block
         self.residual = residual
-        self.residual_deep = ResidualWrapper(tf.keras.Sequential([
+	if self.residual:
+	     print('Residual for DNN is available')
+	     self.residual_deep = ResidualWrapper(tf.keras.Sequential([
                                                              DNN(hidden_units, activation, dnn_dropout),
                                                              tf.keras.layers.Dense(1, kernel_initializer=tf.initializers.zeros)
-        ]))
+             ]))
         self.dense2 = tf.keras.layers.Dense(1)
-
+	else: 
+	    print('Residual for DNN is not available')
         # self.w0 = tf.add_weight(name='fm_deep_weight',shape=(1,), initializer=tf.initializers.random_normal(),
         #                         trainable=True)
     
